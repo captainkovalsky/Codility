@@ -52,7 +52,7 @@ function solution(A) {
   var N = A.length - 1;
 
   //initial left and right summa
-  var leftSum = A[0], rightSum = test.slice(1).reduce(function (prev, current) { return prev + current; }, 0);
+  var leftSum = A[0], rightSum = A.slice(1).reduce(function (prev, current) { return prev + current; }, 0);
   A[0] = Math.abs(leftSum - rightSum);
   
   //save minimum at A[last]
@@ -63,7 +63,7 @@ function solution(A) {
     leftSum += A[P]; //just Add current element
     rightSum -= A[P]; //Subtract current element
     A[P] = Math.abs(leftSum - rightSum); //Calculate diff
-    A[N] = Math.min(A[P - 1], A[P]); //Store min in A[last]
+    A[N] = Math.min(A[N], A[P]); //Store min in A[last]
     P++;
   } while (P < N);
 
